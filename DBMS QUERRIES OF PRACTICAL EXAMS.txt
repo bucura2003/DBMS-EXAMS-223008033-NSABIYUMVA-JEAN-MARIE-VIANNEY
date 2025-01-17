@@ -1,393 +1,238 @@
-PART A.
+REG NO: 223008033
 
 
-Q1.
 
-mysql> CREATE DATABASE EXAMINATIONONE;
+
+
+mysql> CREATE DATABASE DBMSEXAM;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> USE DBMSEXAM;
+Database changed
+mysql> CREATE TABLE CLIENT_MASTER (CLIENTNO INT PRIMARY KEY,NAME VARCHAR (100),ADDRESS VARCHAR (255),CITY VARCHAR(50), STATE VARCHAR (50), BAL_DUE DECIMAL (10,2) DEFAULT 0.00);
+Query OK, 0 rows affected (0.07 sec)
+
+QUESTION 1. mysql>  INSERT INTO client_master('123', 'John Doe', '123 Elm St', 'New York', 'NY', 4500);
+mysql> INSERT INTO CLIENT_MASTER VALUES  ('124', 'Jaysquizer', 'LOS Angeles', 'CALIFORNIA', 'USA', 6000), ('125', 'RIRIMBA', 'KICUKIRO', 'KIGALI', 'RWANDA', 7500),('126', 'ARIANA GRANDE', 'LOSA', 'PINES', 'CHICAGO', 3000), ('127', 'JOMO KENYATA', 'MAKELELE', 'KAMPALA', 'UGANDA', 5200);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM  CLIENT_MASTER;
++----------+---------------+-------------+------------+---------+---------+
+| CLIENTNO | NAME          | ADDRESS     | CITY       | STATE   | BAL_DUE |
++----------+---------------+-------------+------------+---------+---------+
+|        0 | John Doe      | 123 Elm St  | New York   | NY      | 4500.00 |
+|      123 | JOHN MARY     | JALI        | GASABO     | RWANDA  | 4500.00 |
+|      124 | Jaysquizer    | LOS Angeles | CALIFORNIA | USA     | 6000.00 |
+|      125 | RIRIMBA       | KICUKIRO    | KIGALI     | RWANDA  | 7500.00 |
+|      126 | ARIANA GRANDE | LOSA        | PINES      | CHICAGO | 3000.00 |
+|      127 | JOMO KENYATA  | MAKELELE    | KAMPALA    | UGANDA  | 5200.00 |
++----------+---------------+-------------+------------+---------+---------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+QUESTION2. mysql> SELECT NAME FROM CLIENT_MASTER WHERE BAL_DUE>5000;
++--------------+
+| NAME         |
++--------------+
+| Jaysquizer   |
+| RIRIMBA      |
+| JOMO KENYATA |
++--------------+
+3 rows in set (0.01 sec)
+
+mysql>
+QUESTION 3.mysql> UPDATE CLIENT_MASTER SET BAL_DUE = 5100 WHERE CLIENTNO = '123';
 Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
-mysql> USE EXAMINATIONONE;
-Database change
+mysql> SELECT*FROM CLIENT_MASTER;
++----------+---------------+-------------+------------+---------+---------+
+| CLIENTNO | NAME          | ADDRESS     | CITY       | STATE   | BAL_DUE |
++----------+---------------+-------------+------------+---------+---------+
+|        0 | John Doe      | 123 Elm St  | New York   | NY      | 4500.00 |
+|      123 | JOHN MARY     | JALI        | GASABO     | RWANDA  | 5100.00 |
+|      124 | Jaysquizer    | LOS Angeles | CALIFORNIA | USA     | 6000.00 |
+|      125 | RIRIMBA       | KICUKIRO    | KIGALI     | RWANDA  | 7500.00 |
+|      126 | ARIANA GRANDE | LOSA        | PINES      | CHICAGO | 3000.00 |
+|      127 | JOMO KENYATA  | MAKELELE    | KAMPALA    | UGANDA  | 5200.00 |
++----------+---------------+-------------+------------+---------+---------+
+6 rows in set (0.00 sec)
 
+mysql>
 
-mysql> CREATE TABLE CLIENT_MASTER1 (CLIENT_NO INT(200), NAME VARCHAR(200), ADDRESS VARCHAR(100), CITY VARCHAR(100), STATE VARCHAR(100), BAL_DUE INT(200));
-Query OK, 0 rows affected, 2 warnings (0.03 sec)
-
-mysql> INSERT INTO CLIENT_MASTER1 VALUES (1, 'LUISE', 'KIGALI', 'NYAMIRAMBO', 'BIRYOGO', 4000 );(2, 'RIRIMBA', 'KK_KAGARAMA', 'KICUKIRO', 'KIGALI', 5200), (3, 'JAMALI', 'KGJALI', 'KARURUMA', 'GASABO', 5900), (4, 'PILATO', 'KNMUHIMA', 'NYARUGENGE', 'KIGALI', 7000), (5, 'PLAYBOI CARTI', 'NYC', 'NEW YORK', 'USA', 4800);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> INSERT INTO CLIENT_MASTER1 VALUES (1, 'LUISE', 'KIGALI', 'NYAMIRAMBO', 'BIRYOGO', 4000 );
-Query OK, 1 row affected (0.00 sec)
-
-
-mysql> SELECT *FROM CLIENT_MASTER1;
-+-----------+-------+---------+------------+---------+---------+
-| CLIENT_NO | NAME | ADDRESS | CITY | STATE | BAL_DUE |
-+-----------+-------+---------+------------+---------+---------+
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-+-----------+-------+---------+------------+---------+---------+
-2 rows in set (0.00 sec)
-
-mysql> INSERT INTO CLIENT_MASTER1 VALUES(2, 'RIRIMBA', 'KKKAGARAMA', 'KICUKIRO', 'KIGALI', 5200);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> INSERT INTO CLIENT_MASTER1 VALUES(3, 'JAMALI', 'KGJALI', 'KARURUMA', 'GASABO', 5900);
-Query OK, 1 row affected (0.00 sec)
-
-
-mysql> INSERT INTO CLIENT_MASTER1 VALUES(4, 'PILATO', 'KNMUHIMA', 'NYARUGENGE', 'KIGALI', 7000);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> SELECT * FROM CLIENT_MASTER1;
-+-----------+---------+------------+------------+---------+---------+
-| CLIENT_NO | NAME | ADDRESS | CITY | STATE | BAL_DUE |
-+-----------+---------+------------+------------+---------+---------+
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 2 | RIRIMBA | KKKAGARAMA | KICUKIRO | KIGALI | 5200 |
-| 3 | JAMALI | KGJALI | KARURUMA | GASABO | 5900 |
-| 4 | PILATO | KNMUHIMA | NYARUGENGE | KIGALI | 7000 |
-+-----------+---------+------------+------------+---------+---------+
-5 rows in set (0.00 sec)
-
-
-QUESTION 4.   mysql> ALTER TABLE CLIENT_MASTER1 RENAME TO CLIENT12;
+QUESTION 4.mysql> ALTER TABLE CLIENT_MASTER RENAME TO CLIENT12;
 Query OK, 0 rows affected (0.03 sec)
 
 mysql> SELECT*FROM CLIENT12;
-+-----------+---------+------------+------------+---------+---------+
-| CLIENT_NO | NAME | ADDRESS | CITY | STATE | BAL_DUE |
-+-----------+---------+------------+------------+---------+---------+
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 2 | RIRIMBA | KKKAGARAMA | KICUKIRO | KIGALI | 5200 |
-| 3 | JAMALI | KGJALI | KARURUMA | GASABO | 5900 |
-| 4 | PILATO | KNMUHIMA | NYARUGENGE | KIGALI | 7000 |
-+-----------+---------+------------+------------+---------+---------+
-5 rows in set (0.00 sec)
-
-QUESTION 5.                    mysql> SELECT NAME, BAL FROM CLIENT12 WHERE BAL_DUE > 5000;
-ERROR 1054 (42S22): Unknown column 'BAL' in 'field list'
-mysql> SELECT NAME FROM CLIENT12 WHERE BAL_DUE > 5000;
-+---------+
-| NAME |
-+---------+
-| RIRIMBA |
-| JAMALI |
-| PILATO |
-+---------+
-3 rows in set (0.00 sec)
-
- QUESTION 3.            mysql> update client12 set bal_due = 5100 where client_no= 3;
-Query OK, 1 row affected (0.02 sec)
-Rows matched: 1 Changed: 1 Warnings: 0
-
-mysql> select*from client12;
-+-----------+---------+------------+------------+---------+---------+
-| CLIENT_NO | NAME | ADDRESS | CITY | STATE | BAL_DUE |
-+-----------+---------+------------+------------+---------+---------+
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 1 | LUISE | KIGALI | NYAMIRAMBO | BIRYOGO | 4000 |
-| 2 | RIRIMBA | KKKAGARAMA | KICUKIRO | KIGALI | 5200 |
-| 3 | JAMALI | KGJALI | KARURUMA | GASABO | 5100 |
-| 4 | PILATO | KNMUHIMA | NYARUGENGE | KIGALI | 7000 |
-+-----------+---------+------------+------------+---------+---------+
-5 rows in set (0.00 sec)
++----------+---------------+-------------+------------+---------+---------+
+| CLIENTNO | NAME          | ADDRESS     | CITY       | STATE   | BAL_DUE |
++----------+---------------+-------------+------------+---------+---------+
+|        0 | John Doe      | 123 Elm St  | New York   | NY      | 4500.00 |
+|      123 | JOHN MARY     | JALI        | GASABO     | RWANDA  | 5100.00 |
+|      124 | Jaysquizer    | LOS Angeles | CALIFORNIA | USA     | 6000.00 |
+|      125 | RIRIMBA       | KICUKIRO    | KIGALI     | RWANDA  | 7500.00 |
+|      126 | ARIANA GRANDE | LOSA        | PINES      | CHICAGO | 3000.00 |
+|      127 | JOMO KENYATA  | MAKELELE    | KAMPALA    | UGANDA  | 5200.00 |
++----------+---------------+-------------+------------+---------+---------+
+6 rows in set (0.01 sec)
 
 mysql>
-
 
 PART B.
-QUESTION 6.
-mysql> create table departments(dep_id int(100), d_name varchar(100), location varchar(100) );
-Query OK, 0 rows affected, 1 warning (0.03 sec)
 
-mysql> insert into departments values (1, 'hrm', 'first floor');
-Query OK, 1 row affected (0.02 sec)
+QUESTION6.
 
-mysql> insert into departments values (2, 'marketing', 'second floor');
-Query OK, 1 row affected (0.00 sec)
+A) mysql> CREATE TABLE DEPARTMENTS (DEPARTMENT_ID INT PRIMARY KEY, DEPARTMENT_NAME VARCHAR (100));
+Query OK, 0 rows affected (0.03 sec)
 
-mysql> insert into departments values (3, 'production', 'third floor');
-Query OK, 1 row affected (0.00 sec)
+mysql> CREATE TABLE EMPLOYEES (EMPLOYEE_ID INT PRIMARY KEY, EMPLOYEE_NAME VARCHAR (100), DEPARTMENT_ID INT ,SALARY DECIMAL (10,2), FOREIGN KEY (DEPARTMENT_ID) REFERENCES DEPARTMENTS(DEPARTMENT_ID));
+Query OK, 0 rows affected (0.03 sec)
 
-mysql> insert into departments values (4, 'ict', 'fourth floor');
-Query OK, 1 row affected (0.00 sec)
+mysql> INSERT INTO DEPARTMENTS VALUES (1, 'HR'), (2,'FINANCE'), (3,'ENGINEERING'), (4,'MARKETING'), (5,'SALES');
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 
-mysql> insert into departments values (5, 'sales', 'fiveth floor');
-Query OK, 1 row affected (0.00 sec)
+mysql> INSERT INTO EMPLOYEES VALUES (101,'ALICE',1,45000),(102,'LILIANE',2,55000), (103,'CHARLES',3,70000),(104,'DIANE',4,48000),(105,'EVE',5,60000);
+Query OK, 5 rows affected (0.02 sec)
+Records: 5  Duplicates: 0  Warnings: 0
 
-mysql> select*from departments;
-+--------+------------+--------------+
-| dep_id | d_name | location |
-+--------+------------+--------------+
-| 1 | hrm | first floor |
-| 2 | marketing | second floor |
-| 3 | production | third floor |
-| 4 | ict | fourth floor |
-| 5 | sales | fiveth floor |
-+--------+------------+--------------+
-5 rows in set (0.01 sec)
-
-mysql> create table employees (e_id int(100), e_names varchar(200), gender varchar(100), address varchar(200), d_id int(100));
-Query OK, 0 rows affected, 2 warnings (0.02 sec)
-
-
-mysql> insert into employees values (10, 'alice', 'female','huye', 1);
-Query OK, 1 row affected (0.02 sec)
-
-mysql> insert into employees values (11, 'dusabe', 'female','muhanga', 2);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> insert into employees values (12, 'rutayisire', 'male','nyanza', 3);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> insert into employees values (13, 'jamali', 'male','ngoma', 4);,
-Query OK, 1 row affected (0.00 sec)
-
-
-mysql> select*from employees;
-+------+------------+--------+---------+------+
-| e_id | e_names | gender | address | d_id |
-+------+------------+--------+---------+------+
-| 10 | alice | female | huye | 1 |
-| 11 | dusabe | female | muhanga | 2 |
-| 12 | rutayisire | male | nyanza | 3 |
-| 13 | jamali | male | ngoma | 4 |
-+------+------------+--------+---------+------+
-4 rows in set (0.00 sec)
-
-mysql> insert into employees values (14, 'collete','female', 'tumba',5);
-Query OK, 1 row affected (0.00 sec)
-
-mysql> select*from employees;
-+------+------------+--------+---------+------+
-| e_id | e_names | gender | address | d_id |
-+------+------------+--------+---------+------+
-| 10 | alice | female | huye | 1 |
-| 11 | dusabe | female | muhanga | 2 |
-| 12 | rutayisire | male | nyanza | 3 |
-| 13 | jamali | male | ngoma | 4 |
-| 14 | collete | female | tumba | 5 |
-+------+------------+--------+---------+------+
+mysql> SELECT*FROM DEPARTMENTS;
++---------------+-----------------+
+| DEPARTMENT_ID | DEPARTMENT_NAME |
++---------------+-----------------+
+|             1 | HR              |
+|             2 | FINANCE         |
+|             3 | ENGINEERING     |
+|             4 | MARKETING       |
+|             5 | SALES           |
++---------------+-----------------+
 5 rows in set (0.00 sec)
 
-mysql> select*from departments;
-+--------+------------+--------------+
-| dep_id | d_name | location |
-+--------+------------+--------------+
-| 1 | hrm | first floor |
-| 2 | marketing | second floor |
-| 3 | production | third floor |
-| 4 | ict | fourth floor |
-| 5 | sales | fiveth floor |
-+--------+------------+--------------+
+mysql> SELECT*FROM EMPLOYEES;
++-------------+---------------+---------------+----------+
+| EMPLOYEE_ID | EMPLOYEE_NAME | DEPARTMENT_ID | SALARY   |
++-------------+---------------+---------------+----------+
+|         101 | ALICE         |             1 | 45000.00 |
+|         102 | LILIANE       |             2 | 55000.00 |
+|         103 | CHARLES       |             3 | 70000.00 |
+|         104 | DIANE         |             4 | 48000.00 |
+|         105 | EVE           |             5 | 60000.00 |
++-------------+---------------+---------------+----------+
 5 rows in set (0.00 sec)
 
 mysql>
 
+B)mysql> DESCRIBE EMPLOYEES;
++---------------+---------------+------+-----+---------+-------+
+| Field         | Type          | Null | Key | Default | Extra |
++---------------+---------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int           | NO   | PRI | NULL    |       |
+| EMPLOYEE_NAME | varchar(100)  | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int           | YES  | MUL | NULL    |       |
+| SALARY        | decimal(10,2) | YES  |     | NULL    |       |
++---------------+---------------+------+-----+---------+-------+
+4 rows in set (0.11 sec)
 
+mysql>
 
-
-mysql> SELECT * FROM atheletes
-
-mysql> SELECT e_names from employees left join departments on e_id = dep_id;
-+------------+
-| e_names |
-+------------+
-| alice |
-| dusabe |
-| rutayisire |
-| jamali |
-| collete |
-+------------+
-5 rows in set (0.03 sec)
-
-mysql> select e_names.employees, d_name.departments from employees left join departments on e_id = dep_id;
-ERROR 1054 (42S22): Unknown column 'e_names.employees' in 'field list'
-mysql> SELECT e_names, d_name from employees left join departments on e_id = dep_id;
-+------------+--------+
-| e_names | d_name |
-+------------+--------+
-| alice | NULL |
-| dusabe | NULL |
-| rutayisire | NULL |
-| jamali | NULL |
-| collete | NULL |
-+------------+--------+
-5 rows in set (0.00 sec)
-
-
-mysql> SELECT e_names, d_name from employees right join departments on e_id = dep_id;
-+---------+------------+
-| e_names | d_name |
-+---------+------------+
-| NULL | hrm |
-| NULL | marketing |
-| NULL | production |
-| NULL | ict |
-| NULL | sales |
-+---------+------------+
+C)mysql> SELECT EMPLOYEES.EMPLOYEE_NAME,DEPARTMENTS.DEPARTMENT_NAME FROM EMPLOYEES LEFT JOIN DEPARTMENTS ON EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.DEPARTMENT_ID;
++---------------+-----------------+
+| EMPLOYEE_NAME | DEPARTMENT_NAME |
++---------------+-----------------+
+| ALICE         | HR              |
+| LILIANE       | FINANCE         |
+| CHARLES       | ENGINEERING     |
+| DIANE         | MARKETING       |
+| EVE           | SALES           |
++---------------+-----------------+
 5 rows in set (0.00 sec)
 
 mysql>
 
+D)mysql> SELECT EMPLOYEES.EMPLOYEE_NAME,DEPARTMENTS.DEPARTMENT_NAME FROM EMPLOYEES RIGHT JOIN DEPARTMENTS ON EMPLOYEES.DEPARTMENT_ID=DEPARTMENTS.DEPARTMENT_ID;
++---------------+-----------------+
+| EMPLOYEE_NAME | DEPARTMENT_NAME |
++---------------+-----------------+
+| ALICE         | HR              |
+| LILIANE       | FINANCE         |
+| CHARLES       | ENGINEERING     |
+| DIANE         | MARKETING       |
+| EVE           | SALES           |
++---------------+-----------------+
+5 rows in set (0.02 sec)
 
+E)mysql> SELECT EMPLOYEE_ID,EMPLOYEE_NAME,DEPARTMENT_ID,SALARY FROM EMPLOYEES WHERE SALARY > (SELECT AVG(SALARY) FROM EMPLOYEES);
++-------------+---------------+---------------+----------+
+| EMPLOYEE_ID | EMPLOYEE_NAME | DEPARTMENT_ID | SALARY   |
++-------------+---------------+---------------+----------+
+|         103 | CHARLES       |             3 | 70000.00 |
+|         105 | EVE           |             5 | 60000.00 |
++-------------+---------------+---------------+----------+
+2 rows in set (0.01 sec)
 
+mysql>
 
+QUESTION 7. 
+7.1.    mysql> CREATE VIEW LIST_OF_STUDENTS AS SELECT * FROM STUDENTS;
+Query OK, 0 rows affected (0.03 sec)
 
+7.2    mysql> CREATE VIEW LIST_OF_GIRLS AS SELECT* FROM STUDENTS WHERE GENDER = 'FEMALE';
+Query OK, 0 rows affected (0.02 sec)
 
-mysql> create table student (student_id varchar(5),fullnames varchar (25), gender varchar(6), age int(2), department varchar(20));
-Query OK, 0 rows affected, 1 warning (0.03 sec)
+7.3 mysql> CREATE VIEW LIST_OF_BOYS AS SELECT*FROM STUDENTS WHERE GENDER = 'MALE';
+Query OK, 0 rows affected (0.00 sec)
 
-mysql> insert into student values (1, 'gitego braire', 'male', 10, 'bit');
-Query OK, 1 row affected (0.02 sec)
-
-mysql> insert into student values (2, 'alicia blenda', 'female', 20, 'acc');
+7.4.  mysql> INSERT INTO STUDENTS VALUES ('5002', 'RUHAYA', 'MALE', 22, 'SOFTWARE ENGINEERING');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student values (3, 'gitego puissant', 'male', 21, 'bit');
+mysql>  INSERT INTO STUDENTS VALUES ('5001', 'SOLANGE UWIMPUHWE', 'FEMALE', 19, 'COMPUTER SCIENCE');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student values (4, 'uwase latifa', 'female', 23, 'marketing');
+mysql>  INSERT INTO STUDENTS VALUES ('5003', 'TETA SANDRA', 'FEMALE', 21, 'BUSINESS FUNCTION');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> insert into student values (5, 'flame scott', 'male', 22, 'bit');
+mysql>  INSERT INTO STUDENTS VALUES ('5004', 'BERWA BOLINGO', 'MALE', 20, 'WATER ENGINEERING');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> select*from student;
-+------------+-----------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+-----------------+--------+------+------------+
-| 1 | gitego braire | male | 10 | bit |
-| 2 | alicia blenda | female | 20 | acc |
-| 3 | gitego puissant | male | 21 | bit |
-| 4 | uwase latifa | female | 23 | marketing |
-| 5 | flame scott | male | 22 | bit |
-+------------+-----------------+--------+------+------------+
+mysql>  INSERT INTO STUDENTS VALUES ('5005', 'ALNE DUDENGE', 'FEMALE', 18, 'COMPUTER ARCHTECTURE');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>mysql> SELECT*FROM STUDENTS;
++-----------+-------------------+--------+------+----------------------+
+| STUDENTID | FULLNAMES         | GENDER | AGE  | DEPARTMENT           |
++-----------+-------------------+--------+------+----------------------+
+| 5002      | RUHAYA            | MALE   |   22 | SOFTWARE ENGINEERING |
+| 5001      | SOLANGE UWIMPUHWE | FEMALE |   19 | COMPUTER SCIENCE     |
+| 5003      | TETA SANDRA       | FEMALE |   21 | BUSINESS FUNCTION    |
+| 5004      | BERWA BOLINGO     | MALE   |   20 | WATER ENGINEERING    |
+| 5005      | ALNE DUDENGE      | FEMALE |   18 | COMPUTER ARCHTECTURE |
++-----------+-------------------+--------+------+----------------------+
 5 rows in set (0.00 sec)
 
-mysql> select(fullnames) from student;
-+-----------------+
-| fullnames |
-+-----------------+
-| gitego braire |
-| alicia blenda |
-| gitego puissant |
-| uwase latifa |
-| flame scott |
-+-----------------+
-5 rows in set (0.00 sec)
+mysql>
 
-mysql> select (fullnames) from student where gender = female;
-ERROR 1054 (42S22): Unknown column 'female' in 'where clause'
-mysql> select count(gender) as female from student;
-+--------+
-| female |
-+--------+
-| 5 |
-+--------+
-1 row in set (0.02 sec)
+7.5  mysql> DELETE FROM STUDENTS WHERE AGE<20;
+Query OK, 2 rows affected (0.00 sec)
 
-mysql> SELECT* STUDENT WHERE GENDER = 'FEMALE';
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STUDENT WHERE GENDER = 'FEMALE'' at line 1
-mysql> SELECT* FROM STUDENT WHERE GENDER='FEMALE';
-+------------+---------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+---------------+--------+------+------------+
-| 2 | alicia blenda | female | 20 | acc |
-| 4 | uwase latifa | female | 23 | marketing |
-+------------+---------------+--------+------+------------+
-2 rows in set (0.02 sec)
-
-mysql> SELECT* FROM STUDENT WHERE GENDER='MALE';
-+------------+-----------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+-----------------+--------+------+------------+
-| 1 | gitego braire | male | 10 | bit |
-| 3 | gitego puissant | male | 21 | bit |
-| 5 | flame scott | male | 22 | bit |
-+------------+-----------------+--------+------+------------+
+mysql> SELECT*FROM STUDENTS;
++-----------+---------------+--------+------+----------------------+
+| STUDENTID | FULLNAMES     | GENDER | AGE  | DEPARTMENT           |
++-----------+---------------+--------+------+----------------------+
+| 5002      | RUHAYA        | MALE   |   22 | SOFTWARE ENGINEERING |
+| 5003      | TETA SANDRA   | FEMALE |   21 | BUSINESS FUNCTION    |
+| 5004      | BERWA BOLINGO | MALE   |   20 | WATER ENGINEERING    |
++-----------+---------------+--------+------+----------------------+
 3 rows in set (0.00 sec)
 
-mysql> DELETE (AGE)<20;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(AGE)<20' at line 1
-mysql> DELETE (AGE)<20 FROM STUDENT;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(AGE)<20 FROM STUDENT' at line 1
-mysql> DELETE FROM STUDENT WHERE AGE> 20;
-Query OK, 3 rows affected (0.02 sec)
+QUESTION 9
 
-mysql> SELECT*FROM STUDENT;
-+------------+---------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+---------------+--------+------+------------+
-| 1 | gitego braire | male | 10 | bit |
-| 2 | alicia blenda | female | 20 | acc |
-+------------+---------------+--------+------+------------+
-2 rows in set (0.00 sec)
+CREATE TABLE EMPLOYEES1 (EMPLOYEE_ID INT (100), FIRST_NAME VARCHAR (100), LAST_NAME VARCHAR(100), EMAIL VARCHAR(100), PHONE_NUMBER INT(120), HIRE_DATE DATE , JOB_ID INT(100), SALARY INT(120), COMMISSION_PCT DECIMAL(8,2), MANAGER_ID INT(50), DEPARTMENT_ID INT(40));
+Query OK, 0 rows affected, 6 warnings (0.03 sec)
+CREATE TABLE EMPLOYEES1 (EMPLOYEE_ID INT (100), FIRST_NAME VARCHAR (100), LAST_NAME VARCHAR(100), EMAIL VARCHAR(100), PHONE_NUMBER INT(120), HIRE_DATE DATE , JOB_ID INT(100), SALARY INT(120), COMMISSION_PCT DECIMAL(8,2), MANAGER_ID INT(50), DEPARTMENT_ID INT(40));
+Query OK, 0 rows affected, 6 warnings (0.03 sec)
 
-mysql>
-
-
-mysql> DELETE FROM STUDENT WHERE AGE< 15;
-Query OK, 1 row affected (0.00 sec)
-
-mysql> SELECT*FROM STUDENT;
-+------------+---------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+---------------+--------+------+------------+
-| 2 | alicia blenda | female | 20 | acc |
-+------------+---------------+--------+------+------------+
-1 row in set (0.00 sec)
-
-mysql>
-
-
-
-mysql> DELETE FROM STUDENT WHERE AGE< 15;
-Query OK, 1 row affected (0.00 sec)
-
-mysql> SELECT*FROM STUDENT;
-+------------+---------------+--------+------+------------+
-| student_id | fullnames | gender | age | department |
-+------------+---------------+--------+------+------------+
-| 2 | alicia blenda | female | 20 | acc |
-+------------+---------------+--------+------+------------+
-1 row in set (0.00 sec)
-
-mysql> CREATE TABLE EMPLOYEES1 (EMPLOYEE_ID INT (100), FIRST_NAME VARCHAR (100), LAST_NAME VARCHAR(100), EMAIL VARCHAR(100), PHONE_NUMBER INT(120), HIRE_DATE DATE , JOB_ID INT(100), SALARY INT(120), COMMISSION_PCT DECIMAL(8,2), MANAGER_ID INT(50), DEPARTMENT_ID INT(40));
-Query OK, 0 rows affected, 6 warnings (0.03 sec)
-
-mysql> INSERT INTO EMPLOYEES1 VALUES (1, 'RUKUNDO', 'JANVIER', 'rukund', '0786565', 01/10/2000, 10, 5000, 3.1, 100, 50,);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
-mysql> INSERT INTO EMPLOYEES1 VALUES (1, 'RUKUNDO', 'JANVIER', 'rukund', '0786565', 01/10/2000, 10, 5000, 3, 100, 50,);)
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
--> INSERT INTO EMPLOYEES1 VALUES (1, 'RUKUNDO', 'JANVIER', 'rukund', '0786565', 01/10/2000, 10, 5000, 3, 100, 50);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
-INSERT INTO EMPLOYEES1 VALUES (1, 'RUKUNDO', 'JANVIER', 'rukund', '0786565', 0' at line 1
-mysql> INSERT INTO EMPLOYEES1 VALUES (1, 'RUKUNDO', 'JANVIER', 'rukund', '0786565', 01-10-2000, 10, 5000, 3, 100, 50);
-Query OK, 1 row affected, 1 warning (0.03 sec)
-
-mysql> select*from employees1;
-+-------------+------------+-----------+--------+--------------+------------+--------+--------+----------------+------------+---------------+
-| EMPLOYEE_ID | FIRST_NAME | LAST_NAME | EMAIL | PHONE_NUMBER | HIRE_DATE | JOB_ID | SALARY | COMMISSION_PCT | MANAGER_ID | DEPARTMENT_ID |
-+-------------+------------+-----------+--------+--------------+------------+--------+--------+----------------+------------+---------------+
-| 1 | RUKUNDO | JANVIER | rukund | 786565 | 0000-00-00 | 10 | 5000 | 3.00 | 100 | 50 |
-+-------------+------------+-----------+--------+--------------+------------+--------+--------+----------------+------------+---------------+
-1 row in set (0.02 sec)
-
-mysql> INSERT INTO EMPLOYEES1 VALUES (2, 'mamilla', 'irene', 'mamila', '07865656', 02-10-2000, 20, 6000, 3, 200, 60);
-Query OK, 1 row affected, 1 warning (0.00 sec)
-
-mysql> INSERT INTO EMPLOYEES1 VALUES (3, 'mutuyeyezu', 'oscar', 'oscar', '0786667', 01-10-2000, 30, 5500, 4, 300, 70);
-Query OK, 1 row affected, 1 warning (0.00 sec)
-
-mysql> INSERT INTO EMPLOYEES1 VALUES (4, 'tuyubahe', 'onesm', 'onesm', '0796565', 01-10-2000, 40, 6790, 5, 400, 80);)
-Query OK, 1 row affected, 1 warning (0.00 sec)
-
--> INSERT INTO EMPLOYEES1 VALUES (4, 'tuyubahe', 'onesm', 'onesm', '0796565', 01-10-2000, 40, 6790, 5, 400, 80);
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
 INSERT INTO EMPLOYEES1 VALUES (4, 'tuyubahe', 'onesm', 'onesm', '0796565', 01-' at line 1
 mysql> select*from employees1;
 +-------------+------------+-----------+--------+--------------+------------+--------+--------+----------------+------------+---------------+
@@ -398,45 +243,18 @@ mysql> select*from employees1;
 | 3 | mutuyeyezu | oscar | oscar | 786667 | 0000-00-00 | 30 | 5500 | 4.00 | 300 | 70 |
 | 4 | tuyubahe | onesm | onesm | 796565 | 0000-00-00 | 40 | 6790 | 5.00 | 400 | 80 |
 +-------------+------------+-----------+--------+--------------+------------+--------+--------+----------------+------------+---------------+
-4 rows in set (0.00 sec)
+4 rows in set (0.00 sec)
 
-mysql> select employee_id, first_name, last_name, salary from employees;
-ERROR 1054 (42S22): Unknown column 'employee_id' in 'field list'
-mysql> SELECT EMPLOYEE_ID , FIRST_NAME, LAST_NAME ; SALARY FROM EMPLOYEES1;
-ERROR 1054 (42S22): Unknown column 'EMPLOYEE_ID' in 'field list'
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SALARY FROM EMPLOYEES1' at line 1
-mysql> SELECT 'EMPLOYEE_ID' , 'FIRST_NAME', 'LAST_NAME' ; 'SALARY' FROM EMPLOYEES1;
-+-------------+------------+-----------+
-| EMPLOYEE_ID | FIRST_NAME | LAST_NAME |
-+-------------+------------+-----------+
-| EMPLOYEE_ID | FIRST_NAME | LAST_NAME |
-+-------------+------------+-----------+
-1 row in set (0.00 sec)
+9.1 mysql> SELECT 
+    employee_id, 
+    CONCAT(first_name, ' ', last_name) AS full_name, salary from employees1;
 
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''SALARY' FROM EMPLOYEES1' at line 1
-mysql> SELECT EMPLOYEE_ID,FIRST_NAME,LAST_NAME;SALARY FROM EMPLOYEES1 ;
-ERROR 1054 (42S22): Unknown column 'EMPLOYEE_ID' in 'field list'
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SALARY FROM EMPLOYEES1' at line 1
-mysql> SELECT FIRST_NAME,LAST_NAME;SALARY FROM EMPLOYEES1;
-ERROR 1054 (42S22): Unknown column 'FIRST_NAME' in 'field list'
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SALARY FROM EMPLOYEES1' at line 1
-mysql> SELECT EMPLOYEE_ID,FIRST_NAME,LAST_NAME;SALARY FROM EMPLOYEES1 WHERE MANAGER_ID= 100;
-ERROR 1054 (42S22): Unknown column 'EMPLOYEE_ID' in 'field list'
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SALARY FROM EMPLOYEES1 WHERE MANAGER_ID= 100' at line 1
-mysql> select first_name,last_name from employees1 where last_name = 'irene';
-+------------+-----------+
-| first_name | last_name |
-+------------+-----------+
-| mamilla | irene |
-+------------+-----------+
-1 row in set (0.00 sec)
+9.2  mysql> SELECT 
+    employee_id, 
+    CONCAT(first_name, ' ', last_name) AS full_name, manager_id FROM    employees1 WHERE manager_id = 100;
 
-
-
-
-mysql> insert into sales values (1 , 'jane smith', 'branch b', 3000, '2009-12-22' );
-ERROR 1062 (23000): Duplicate entry '1' for key 'sales.PRIMARY'
-mysql> insert into sales values (2 , 'jane smith', 'branch b', 3000, '2009-12-22' );
+question 10. 
+a)mysql> insert into sales values (2 , 'jane smith', 'branch b', 3000, '2009-12-22' );
 Query OK, 1 row affected (0.00 sec)
 
 mysql> insert into sales values (3 , 'jim brown', 'branch c', 25000, '2009-10-22' );
@@ -444,24 +262,8 @@ Query OK, 1 row affected (0.00 sec)
 
 mysql> insert into sales values (4,'jake white', 'branch d', 3500, '2009-11-22' );)
 Query OK, 1 row affected (0.00 sec)
-
--> select*from sales;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
-select*from sales' at line 1
-mysql> select * from sales;
-+----------+------------+----------+-------------+------------+
-| sales_no | salesname | branch | salesamount | dob |
-+----------+------------+----------+-------------+------------+
-| 1 | john doe | branch a | 1500.00 | 2009-12-21 |
-| 2 | jane smith | branch b | 3000.00 | 2009-12-22 |
-| 3 | jim brown | branch c | 25000.00 | 2009-10-22 |
-| 4 | jake white | branch d | 3500.00 | 2009-11-22 |
-+----------+------------+----------+-------------+------------+
-4 rows in set (0.00 sec)
-
 mysql> insert into sales values (5 , 'jill green', 'branch e', 1800, '2009-11-22' );
 Query OK, 1 row affected (0.00 sec)
-
 mysql> select * from sales;
 +----------+------------+----------+-------------+------------+
 | sales_no | salesname | branch | salesamount | dob |
@@ -474,9 +276,8 @@ mysql> select * from sales;
 +----------+------------+----------+-------------+------------+
 5 rows in set (0.00 sec)
 
-mysql> select branch, sum (salesamount) as totalsales from sales group by branch;
-ERROR 1630 (42000): FUNCTION examination.sum does not exist. Check the 'Function Name Parsing and Resolution' section in the Reference Manual
-mysql> select branch , avg(salesamount) as averagesales from sales group by branch;
+
+c) mysql> select branch , avg(salesamount) as averagesales from sales group by branch;
 +----------+--------------+
 | branch | averagesales |
 +----------+--------------+
@@ -488,7 +289,8 @@ mysql> select branch , avg(salesamount) as averagesales from sales group by bran
 +----------+--------------+
 5 rows in set (0.03 sec)
 
-mysql> select salesname , dob from sales where month(dob) = 12;
+d)
+    mysql> select salesname , dob from sales where month(dob) = 12;
 +------------+------------+
 | salesname | dob |
 +------------+------------+
@@ -497,7 +299,7 @@ mysql> select salesname , dob from sales where month(dob) = 12;
 +------------+------------+
 2 rows in set (0.01 sec)
 
-mysql> select salesname dob from sales order by salesname asc;
+e)mysql> select salesname dob from sales order by salesname asc;
 +------------+
 | dob |
 +------------+
@@ -510,3 +312,11 @@ mysql> select salesname dob from sales order by salesname asc;
 5 rows in set (0.02 sec)
 
 mysql>
+
+
+
+    
+ 
+
+
+
